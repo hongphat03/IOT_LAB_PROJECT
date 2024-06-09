@@ -34,7 +34,7 @@ const HomePage = () => {
     const [temperature, setTemperature] = useState(null);
     const [humidity, setHumidity] = useState(null);
 
-  useEffect(() => {
+    useEffect(() => {
         client.onMessageArrived = async (message) => {
             console.log("onMessageArrived:"+message.payloadString);
             if(message.topic == "hongphat03/feeds/cambien1"){
@@ -46,22 +46,26 @@ const HomePage = () => {
                 setHumidity(message.payloadString)
             }
         }
-      }, []);
+    }, []);
     
     const renderData = () => {
         return (
             <View style={styles.dataContainer}>
                 <Text style={styles.label}>Temperature:</Text>
-                <Text style={styles.value}>{temperature != null ? temperature : "Loading..."} °C</Text>
+                <Text style={styles.value}>22°C</Text>
 
-                <Text style={styles.label}>Humidity:</Text>
-                <Text style={styles.value}>{humidity != null ? humidity : "Loading..." } %</Text>
+                <Text style={styles.label}>Soil Humidity:</Text>
+                <Text style={styles.value}>50 %</Text>
             </View>
         );
     };
 
     const handleControlPageNavigation = () => {
         navigation.navigate('ControlPage');
+    };
+
+    const handleGoToSchedule= () => {
+        navigation.navigate('Schedule');
     };
 
     return (
@@ -77,7 +81,11 @@ const HomePage = () => {
                 <TouchableOpacity onPress={handleControlPageNavigation} style={styles.button}>
                     <Text style={styles.buttonText}>Go to Control Page</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={handleGoToSchedule} style={styles.button}>
+                    <Text style={styles.buttonText}>Go to Schedule Page</Text>
+                </TouchableOpacity>
                 </View>
+                
             </View>
         </View>
     );

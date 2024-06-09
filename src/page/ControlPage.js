@@ -16,7 +16,7 @@ const ControlPage = () => {
     const sendDataToAdafruit = (lightState) => {
         console.log(`Sending light state to Adafruit: ${lightState ? 'ON' : 'OFF'}`);
       
-        var message = new Paho.Message(`${lightState ? '1' : '0'}`);
+        let message = new Paho.Message(`${lightState ? '1' : '0'}`);
         message.destinationName = "hongphat03/feeds/nutnhan1";
         message.qos = 0;
 
@@ -27,7 +27,7 @@ const ControlPage = () => {
     return (
         <View style={styles.container2}>
             <View style={[styles.container, lightOn ? styles.lightOnBackground : styles.lightOffBackground]}>
-                <Text style={styles.title}>Light is {lightOn?"ON":"OFF"}</Text>
+                <Text style={styles.title}>Pump is {lightOn?"ON":"OFF"}</Text>
                 <TouchableOpacity onPress={handleLightControl} style={styles.button}>
                     <Text style={styles.buttonText}>{lightOn ? 'Turn Off Light' : 'Turn On Light'}</Text>
                 </TouchableOpacity>

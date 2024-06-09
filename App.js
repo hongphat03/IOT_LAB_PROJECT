@@ -4,7 +4,7 @@ import HomePage from './src/page/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ControlPage from './src/page/ControlPage';
-import { MqttContext } from './src/mqtt/mqtt';
+import SchedulePage from './src/page/SchedulePage';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +14,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen  name="HomePage" component={HomePage} />
           <Stack.Screen  name="ControlPage" component={ControlPage} />
+          <Stack.Screen  name="Schedule" component={SchedulePage} />
         </Stack.Navigator>
     </NavigationContainer>
   );
